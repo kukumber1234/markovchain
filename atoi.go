@@ -16,6 +16,10 @@ func string_to_int(string_number string) int {
 			if err != nil {
 				os.Exit(1)
 			}
+			if d > 10000 {
+				fmt.Fprintln(os.Stderr, "Given number can't be more 10,000")
+				os.Exit(1)
+			}
 			return d
 		} else {
 			fmt.Fprintln(os.Stderr, "Unexpected thing front of number")
