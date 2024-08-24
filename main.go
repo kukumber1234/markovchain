@@ -64,33 +64,40 @@ func main() {
 			save_txt = append(save_txt, wordMore)
 		}
 		// save_txt_copy := save_txt
-		for i := 0; i < len(save_txt); i++ {
-			save_txt_part = append(save_txt_part, save_txt[i])
-			if len(save_txt_part) == *prefix {
-				for j := 0; j < *prefix; j++ {
-					if save_prefix[j] == save_txt_part[j] {
-						save_identically_word++
-					}
-					if save_identically_word == *prefix {
-						if i+1 < len(save_txt) {
-							save_word = append(save_word, save_txt[i+1])
-							save_prefix = save_prefix[*prefix-prefixDivide:]
-							for l := 0; l < len(save_word); l++ {
-								save_prefix = append(save_prefix, save_word[l])
-								allSave = append(allSave, save_word...)
-								fmt.Println(save_prefix)
-							}
+		for p := 0; p < *defaultNumber; p++ {
+			for i := 0; i < len(save_txt); i++ {
+				save_txt_part = append(save_txt_part, save_txt[i])
+				if len(save_txt_part) == *prefix {
+					for j := 0; j < *prefix; j++ {
+						if save_prefix[j] == save_txt_part[j] {
+							save_identically_word++
 						}
-						i = 0
+						if save_identically_word == *prefix {
+							if i+1 < len(save_txt) {
+								save_word = append(save_word, save_txt[i+1])
+								save_prefix = save_prefix[*prefix-prefixDivide:]
+								for l := 0; l < len(save_word); l++ {
+									save_prefix = append(save_prefix, save_word[l])
+									allSave = append(allSave, save_word...)
+									fmt.Println(save_prefix)
+								}
+							} else {
+								fmt.Println("GG")
+							}
+							i = 0
+						}
 					}
+					save_identically_word = 0
+					save_word = []string{}
+					save_txt_part = []string{}
 				}
-				save_identically_word = 0
-				save_word = []string{}
-				save_txt_part = []string{}
 			}
 		}
-		fmt.Println(save_word)
+		// fmt.Println(save_word)
 		for i := 0; i < len(allSave); i++ {
+			if i >= *defaultNumber {
+				break
+			}
 			fmt.Print(allSave[i])
 			fmt.Print(" ")
 		}
