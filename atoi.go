@@ -11,7 +11,7 @@ func string_to_int(string_number string) int {
 		if string_number[0] == '-' {
 			fmt.Fprintln(os.Stderr, "Given number can't be negative.")
 			os.Exit(1)
-		} else if string_number[0] > 48 && string_number[0] < 57 {
+		} else if string_number[0] >= 48 && string_number[0] <= 57 {
 			d, err := strconv.Atoi(string_number)
 			if err != nil {
 				os.Exit(1)
