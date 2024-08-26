@@ -5,22 +5,22 @@ import (
 	"os"
 )
 
-func fileRead(a string) []string {
+func fileRead(fileName string) []string {
 	var countPrefix int = 0
-	f, _ := os.Open(a)
+	f, _ := os.Open(fileName)
 	defer f.Close()
 
 	s := bufio.NewScanner(f)
 	s.Split(bufio.ScanWords)
 
-	d := []string{}
+	savePrefixWords := []string{}
 	for s.Scan() {
 		word := s.Text()
-		d = append(d, word)
+		savePrefixWords = append(savePrefixWords, word)
 		countPrefix++
 		if countPrefix == *prefix {
 			break
 		}
 	}
-	return d
+	return savePrefixWords
 }
