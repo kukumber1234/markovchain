@@ -38,7 +38,6 @@ func main() {
 		os.Exit(1)
 	}
 
-
 	if *prefixWord != "" && *prefix != 0 {
 		checkLen()
 	}
@@ -50,5 +49,4 @@ func main() {
 		fileSave = fileRead(fileName)
 		mapSave(save_txt, fileSave)
 	}
-
 }
