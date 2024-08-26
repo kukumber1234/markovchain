@@ -1,26 +1,24 @@
 package main
 
 import (
-	"bufio"
+	"fmt"
 	"os"
 )
 
-func fileRead(fileName string) []string {
+func fileRead() []string {
 	var countPrefix int = 0
-	f, _ := os.Open(fileName)
-	defer f.Close()
-
-	s := bufio.NewScanner(f)
-	s.Split(bufio.ScanWords)
-
-	savePrefixWords := []string{}
-	for s.Scan() {
-		word := s.Text()
-		savePrefixWords = append(savePrefixWords, word)
+	var txt_words []string
+	wordMore := ""
+	for {
+		_, err := fmt.Fscan(os.Stdin, &wordMore)
+		if err != nil {
+			break
+		}
+		txt_words = append(txt_words, wordMore)
 		countPrefix++
 		if countPrefix == *prefix {
 			break
 		}
 	}
-	return savePrefixWords
+	return txt_words
 }
