@@ -22,15 +22,15 @@ func checkNum(defaultNumber *int) {
 }
 
 func checkPref(prefix *int) {
-	if *prefix < 0 || *prefix > 5 {
-		fmt.Fprintln(os.Stderr, "Prefix number must be between 0 <= x <= 5")
+	if *prefix < 1 || *prefix > 5 {
+		fmt.Fprintln(os.Stderr, "Prefix number must be between 1 <= x <= 5")
 		os.Exit(1)
 	}
 }
 
 func checkWord(save_txt, fileSave []string) {
 	prefixWordString := strings.Fields(*prefixWord)
-	if len(prefixWordString) > 1 && len(prefixWordString) < 5 {
+	if len(prefixWordString) > 0 && len(prefixWordString) < 5 {
 		*prefix = len(prefixWordString)
 		save_txt = fullFile()
 		for i := 0; i < len(prefixWordString); i++ {
@@ -38,7 +38,7 @@ func checkWord(save_txt, fileSave []string) {
 		}
 		mapSave(save_txt, fileSave)
 	} else {
-		fmt.Fprintln(os.Stderr, "Prefix word len must be between 2 <= x <= 5")
+		fmt.Fprintln(os.Stderr, "Prefix word len must be between 1 <= x <= 5")
 		os.Exit(1)
 	}
 }
