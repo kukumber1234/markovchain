@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func fullFile() []string{
+func fullFile() []string {
 	var txt_words []string
 	wordMore := ""
 	for {
