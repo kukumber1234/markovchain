@@ -16,7 +16,6 @@ var (
 func main() {
 	var save_txt []string
 	var fileSave []string
-	fileName := "the_great_gatsby.txt"
 
 	flag.Parse()
 
@@ -46,7 +45,7 @@ func main() {
 		checkWord(save_txt, fileSave)
 	} else {
 		save_txt = fullFile()
-		fileSave = fileRead(fileName)
+		fileSave = fileRead()
 		mapSave(save_txt, fileSave)
 	}
 }
