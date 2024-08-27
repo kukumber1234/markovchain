@@ -15,6 +15,10 @@ func fullFile() []string {
 		}
 		txt_words = append(txt_words, wordMore)
 	}
+	if len(txt_words) == 1 || len(txt_words) == 0 {
+		fmt.Fprintln(os.Stderr, "Do not use echo please")
+		os.Exit(1)
+	}
 	return txt_words
 }
 
