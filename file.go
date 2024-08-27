@@ -17,3 +17,11 @@ func fullFile() []string {
 	}
 	return txt_words
 }
+
+func fileRead(save_txt []string) []string {
+	var txt_words_part []string
+	for i := 0; i < *prefix; i++ {
+		txt_words_part = append(txt_words_part, save_txt[i])
+	}
+	return txt_words_part
+}
