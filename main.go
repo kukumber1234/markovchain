@@ -45,7 +45,7 @@ func main() {
 		checkWord(save_txt, fileSave)
 	} else {
 		save_txt = fullFile()
-		fileSave = fileRead()
+		fileSave = fileRead(save_txt)
 		mapSave(save_txt, fileSave)
 	}
 }
