@@ -19,6 +19,11 @@ func main() {
 
 	flag.Parse()
 
+	if *prefix != len(*prefixWord) {
+		fmt.Fprintln(os.Stderr, "Len of prefix word and prefix must be equal")
+		os.Exit(1)
+	}
+
 	if *help {
 		helper()
 	}
