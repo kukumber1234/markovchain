@@ -15,14 +15,14 @@ func fullFile() []string {
 		}
 		txt_words = append(txt_words, wordMore)
 	}
-	if len(txt_words) == 1 || len(txt_words) == 0 {
-		fmt.Fprintln(os.Stderr, "Do not use echo please")
-		os.Exit(1)
-	}
 	return txt_words
 }
 
 func fileRead(save_txt []string) []string {
+	if len(save_txt) <= *prefix {
+		helper()
+		os.Exit(1)
+	}
 	var txt_words_part []string
 	for i := 0; i < *prefix; i++ {
 		txt_words_part = append(txt_words_part, save_txt[i])
